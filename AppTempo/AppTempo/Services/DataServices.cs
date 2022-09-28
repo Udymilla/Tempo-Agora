@@ -14,11 +14,11 @@ namespace AppTempo.Services
     {
       public static async Task<Tempo> GetPrevisaoDoTempo (string cidade)
       {
-            string appId = "";
+            string appId = "09ce88765cc14aeea5deccd496499905";
 
-            string queryString = "" + cidade + "&units=metric" + "&appid=" + appId;
+            string queryString = "http://api.openweathermap.org/data/2.5/weather?q=" + cidade + "&units=metric" + "&appid=" + appId;
 
-            dynamic resultado = await getDataFromServices(queryString).ConfigureAwait(false);
+            dynamic resultado = await getDataFromService(queryString).ConfigureAwait(false);
 
             if (resultado["weather"] != null)
             {
@@ -42,7 +42,33 @@ namespace AppTempo.Services
 
       }
 
-        
+        public static async Task <dynamic> getDataFromService (string queryString)
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync (queryString);
+            dynamic data = null;
+            if (response! = null)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                data = JsonConvert.DeserializeObject(json);
+            }
+            return data;
+        }
+
+        public static async Task<dynamic> getDataFromServiceByCity(string city)
+        {
+            string appId = "09ce88765cc14aeea5deccd496499905";
+            string url = string.Format ("http://api.openweathermap.org/data/2.5/forecast/daily?q={0}&units=metric&cnt=1&APPID={1}", city.Trim(), appId);
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync(url);
+            dynamic data = null;
+            if (response != null)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                data= JsonConvert.DeserializeObject(json);
+            }
+            return data;
+        }
 
     }
 }
