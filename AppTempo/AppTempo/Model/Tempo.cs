@@ -12,7 +12,7 @@ namespace AppTempo.Model
         public string Humidity { get; set; }
         public string Visibility { get; set; }
         public string Sunrise { get; set; }
-        public string Sunsut { get; set; }
+        public string Sunset { get; set; }
     }
 
        public Tempo()
