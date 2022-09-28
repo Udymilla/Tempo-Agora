@@ -13,7 +13,7 @@ namespace AppTempo.Model
         public string Visibility { get; set; }
         public string Sunrise { get; set; }
         public string Sunset { get; set; }
-    }
+    
 
        public Tempo()
     {
@@ -26,4 +26,6 @@ namespace AppTempo.Model
         this.Sunset = " ";
     }
 
+   }
 }
+

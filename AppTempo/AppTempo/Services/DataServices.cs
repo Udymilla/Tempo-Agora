@@ -45,7 +45,7 @@ namespace AppTempo.Services
         public static async Task <dynamic> getDataFromService (string queryString)
         {
             HttpClient client = new HttpClient();
-            var response = await client.GetAsync (queryString);
+            var response = await client.GetAsync(queryString);
             dynamic data = null;
             if (response! = null)
             {
@@ -62,7 +62,7 @@ namespace AppTempo.Services
             HttpClient client = new HttpClient();
             var response = await client.GetAsync(url);
             dynamic data = null;
-            if (response != null)
+            if (response!= null)
             {
                 string json = response.Content.ReadAsStringAsync().Result;
                 data= JsonConvert.DeserializeObject(json);
