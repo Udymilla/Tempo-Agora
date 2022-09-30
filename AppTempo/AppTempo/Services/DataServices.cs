@@ -10,7 +10,7 @@ using AppTempo.Model;
 
 namespace AppTempo.Services
 {
-    internal class DataServices
+    public class DataServices
     {
       public static async Task<Tempo> GetPrevisaoDoTempo (string cidade)
       {
@@ -47,7 +47,7 @@ namespace AppTempo.Services
             HttpClient client = new HttpClient();
             var response = await client.GetAsync(queryString);
             dynamic data = null;
-            if (response! = null)
+            if (response != null)
             {
                 string json = response.Content.ReadAsStringAsync().Result;
                 data = JsonConvert.DeserializeObject(json);
