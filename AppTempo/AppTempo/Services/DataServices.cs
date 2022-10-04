@@ -16,7 +16,7 @@ namespace AppTempo.Services
       {
             string appId = "09ce88765cc14aeea5deccd496499905";
 
-            string queryString = "http://api.openweathermap.org/data/2.5/weather?q=" + cidade + "&units=metric" + "&appid=" + appId;
+            string queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + cidade + "&units=metric" + "&appid=" + appId;
 
             dynamic resultado = await getDataFromService(queryString).ConfigureAwait(false);
 
